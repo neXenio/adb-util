@@ -1,4 +1,4 @@
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/neXenio/adb-util) [![GitHub license](https://img.shields.io/github/license/neXenio/adb-util.svg)](https://github.com/neXenio/adb-util/blob/master/LICENSE)
+[![WIP](https://img.shields.io/badge/work%20in%20progress-yes-green.svg)](https://github.com/neXenio/adb-util) [![GitHub license](https://img.shields.io/github/license/neXenio/adb-util.svg)](https://github.com/neXenio/adb-util/blob/master/LICENSE)
 
 # ADB Utility
 

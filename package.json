@@ -1,7 +1,7 @@
 {
   "name": "adb-util",
   "productName": "ADB Util",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An Electron application providing a GUI for common ADB operations",
   "license": "Apache-2.0",
   "repository": "nexenio/adb-util",

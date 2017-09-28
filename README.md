@@ -30,6 +30,10 @@ You can check the progress of new features in the [project] section.
 
 Make sure that `adb` is available in your `PATH`. You can check if that's the case by opening a terminal and executing `adb version`.
 
+## Downloads
+
+If you don't want to build the project yourself, head over to the [releases] section and grab an executable from there.
+
 ## Development
 
 #### Deploying
@@ -55,6 +59,8 @@ Please checkout the [open issues] and the [project] section. Looking forward to 
 
 This tool is being built using [Electron], powered by [react] and [redux]. It heavily relies on the [adbkit] module.
 
+**Note** regarding code quality: This tool has been created by people that just got started with this technology stack. Although we try to follow best practices, you might not want to use this project as a reference.
+
 ## License
 
 [Apache License V2](LICENSE)
@@ -69,3 +75,4 @@ Copyright © neXenio GmbH.
 [screenshot]: assets/screenshot.png
 [project]: https://github.com/neXenio/adb-util/projects/1
 [open issues]: https://github.com/neXenio/adb-util/issues
+[releases]: https://github.com/neXenio/adb-util/releases

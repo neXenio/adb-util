@@ -4,3 +4,4 @@ node_modules
 app.js
 /out
 .DS_Store
+npm-debug.log

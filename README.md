@@ -24,13 +24,20 @@ The tool offers some convenience utilities to speed up the development, especial
 - [ ] Pushing and pulling files and folders
 - [ ] Viewing Logcat output (`adb logcat`)
 
+You can check the progress of new features in the [project] section.
+
 ## Requirements
 
 Make sure that `adb` is available in your `PATH`. You can check if that's the case by opening a terminal and executing `adb version`.
 
+## Downloads
+
+If you don't want to build the project yourself, head over to the [releases] section and grab an executable from there.
+
 ## Development
 
 #### Deploying
+
 ```sh
 $ npm install    # install dependencies
 $ npm start      # support for reloading views, restarting electron
@@ -44,9 +51,15 @@ $ npm run build-osx  # osx(64)
 $ npm run build-win  # win(32, 64)
 ```
 
+#### Contributing
+
+Please checkout the [open issues] and the [project] section. Looking forward to your pull requests!
+
 ## Build With
 
 This tool is being built using [Electron], powered by [react] and [redux]. It heavily relies on the [adbkit] module.
+
+**Note** regarding code quality: This tool has been created by people that just got started with this technology stack. Although we try to follow best practices, you might not want to use this project as a reference.
 
 ## License
 
@@ -60,3 +73,6 @@ Copyright © neXenio GmbH.
 [adbkit]: https://github.com/openstf/adbkit
 [adb]: https://developer.android.com/studio/command-line/adb.html
 [screenshot]: assets/screenshot.png
+[project]: https://github.com/neXenio/adb-util/projects/1
+[open issues]: https://github.com/neXenio/adb-util/issues
+[releases]: https://github.com/neXenio/adb-util/releases

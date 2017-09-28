@@ -1,7 +1,7 @@
 {
   "name": "adb-util",
   "productName": "ADB Util",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An Electron application providing a GUI for common ADB operations",
   "license": "Apache-2.0",
   "repository": "nexenio/adb-util",
@@ -19,8 +19,8 @@
     "start": "node starter.js --2nd",
     "start-1st": "node starter.js",
     "build": "npm run build-osx && npm run build-win",
-    "build-osx": "NODE_ENV=production webpack -p --config webpack.config.js && electron-packager . $npm_package_productName --overwrite --out=dist --ignore='^/dist$' --prune --asar --platform=darwin --arch=x64 --version=$npm_package_electronVersion --icon=assets/epp.icns",
-    "build-win": "NODE_ENV=production webpack -p --config webpack.config.js && electron-packager . $npm_package_productName --overwrite --out=dist --ignore='^/dist$' --prune --asar --platform=win32 --arch=all --version=$npm_package_electronVersion --icon=assets/epp.ico"
+    "build-osx": "NODE_ENV=production webpack -p --config webpack.config.js && electron-packager . $npm_package_productName --overwrite --out=dist --ignore='^/dist$' --prune --asar --platform=darwin --arch=x64 --version=$npm_package_electronVersion --icon=assets/icon.icns",
+    "build-win": "NODE_ENV=production webpack -p --config webpack.config.js && electron-packager . $npm_package_productName --overwrite --out=dist --ignore='^/dist$' --prune --asar --platform=win32 --arch=all --version=$npm_package_electronVersion --icon=assets/icon.ico"
   },
   "keywords": [
     "adb",

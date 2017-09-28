@@ -28,7 +28,8 @@ function createMainWindow() {
     minHeight: 400,
     acceptFirstMouse: true,
     titleBarStyle: 'hidden',
-    frame: false
+    frame: false,
+    icon: __dirname + '/assets/icon.ico'
   };
 
   if (process.env.DEV) {

@@ -1,7 +1,7 @@
 import React from "react";
-
+const log = require('electron-log');
 const electron = require('electron');
-const ipcRenderer = electron.ipcRenderer; 
+const ipcRenderer = electron.ipcRenderer;
 import { connect } from 'react-redux'
 
 class DevicesTable extends React.Component {
@@ -51,9 +51,10 @@ class DevicesTable extends React.Component {
   }
 
   requestDevicesUpdate() {
-    console.log('Requesting devices update');
+    log.debug('Requesting devices update');
     ipcRenderer.send('adbkit-update-devices');
   }
+
 }
 
 class DevicesTableRow extends React.Component {

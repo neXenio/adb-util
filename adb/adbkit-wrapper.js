@@ -47,6 +47,22 @@ function updateDevices(event, arg) {
     });
 }
 
+ipcMain.on('adbkit-connect-device', function(event, arg) {
+  connectDevice(event, arg);
+});
+
+function connectDevice(event, arg) {
+  log.debug(`Connecting device: `, arg);
+  client.connect(arg)
+    .then(function(deviceId) {
+      log.debug('Device connected:', deviceId)
+    })
+    .catch(function(err) {
+      log.warn('Unable to connect device:', err.stack)
+      event.sender.send('adbkit-devices-updated', []);
+    });
+}
+
 ipcMain.on('adbkit-update-device', function(event, device) {
   updateDeviceFeatures(event, device);
   updateDeviceIpAddress(event, device);

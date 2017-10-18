@@ -35,6 +35,7 @@
     "electron-debug": "^1.4.0",
     "electron-log": "^2.2.9",
     "history": "^4.7.2",
+    "ip": "^1.1.5",
     "object-assign": "^4.0.1",
     "portscanner": "^2.1.1",
     "react": "^15.6.1",

@@ -50,7 +50,10 @@ export class DeviceManager {
     });
 
     ipcRenderer.on('portscan-requested', (event, args) => {
-      this.onPortscanRequested(args);
+      args = (args !== undefined ? args : {});
+      let ipAddress = (args.ip !== undefined ? args.ip : ip.address());
+      let port = (args.port !== undefined ? args.port : '5555');
+      this.onPortscanRequested(ipAddress, port);
     });
 
     // tell the adbkit that we care about device updates
@@ -104,19 +107,9 @@ export class DeviceManager {
     this.dispatch(actions.deviceUpdated(device));
   }
 
-  onPortscanRequested(args) {
+  onPortscanRequested(ipAddress, port) {
     log.debug('Starting portscan');
-    if (!args) {
-      args = {};
-    }
-    if (args.ip === undefined) {
-        args.ip = ip.address();
-    }
-    if (args.port === undefined) {
-        args.port = '5555';
-    }
-    const baseIp = args.ip.substring(0, args.ip.lastIndexOf('.') + 1);
-    const port = args.port;
+    const baseIp = ipAddress.substring(0, ipAddress.lastIndexOf('.') + 1);
     for (let i = 0; i <= 255; i++) {
       const scannedIp = baseIp + i;
       portscanner.checkPortStatus(port, scannedIp)

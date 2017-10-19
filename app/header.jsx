@@ -45,7 +45,6 @@ class Header extends React.Component {
   requestPortscan() {
     log.debug('Requesting portscan');
     electron.remote.getCurrentWindow().webContents.send('portscan-requested');
-    //ipcRenderer.send('portscan-requested');
   }
 
 }

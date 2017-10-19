@@ -59,7 +59,6 @@ function connectDevice(event, arg) {
     })
     .catch(function(err) {
       log.warn('Unable to connect device:', err.stack)
-      event.sender.send('adbkit-devices-updated', []);
     });
 }
 

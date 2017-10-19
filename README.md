@@ -9,7 +9,7 @@ An [Electron] application for Android developers, providing a GUI for common [AD
 The tool offers some convenience utilities to speed up the development, especially when handling multiple devices. Features:
 
 - [x] Listing connected devices (`adb devices`)
-- [ ] Discovering network devices with the ADB deamon (`nmap -p 5555`)
+- [x] Discovering network devices with the ADB deamon (`nmap -p 5555`)
 - [ ] Connecting and disconnecting devices (`adb connect`, ...)
 - [ ] Toggling connections between USB and TCP (`adb usb`, ...)
 - [x] Executing shell commands (`adb shell`)

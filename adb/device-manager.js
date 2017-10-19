@@ -50,9 +50,9 @@ export class DeviceManager {
     });
 
     ipcRenderer.on('portscan-requested', (event, args) => {
-      args = (args !== undefined ? args : {});
-      let ipAddress = (args.ip !== undefined ? args.ip : ip.address());
-      let port = (args.port !== undefined ? args.port : '5555');
+      args = args || {};
+      let ipAddress = args.ip || ip.address();
+      let port = args.port || '5555';
       this.onPortscanRequested(ipAddress, port);
     });
 
@@ -132,7 +132,6 @@ export class DeviceManager {
       // attempt to connect
       ipcRenderer.send('adbkit-connect-device', device.ipAddress);
     }
-    this.dispatch(actions.deviceDiscovered(device));
   }
 
 }

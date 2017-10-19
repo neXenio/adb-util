@@ -49,8 +49,7 @@ export class DeviceManager {
       this.onDeviceFeaturesUpdated(device);
     });
 
-    ipcRenderer.on('portscan-requested', (event, args) => {
-      args = args || {};
+    ipcRenderer.on('portscan-requested', (event, args = {}) => {
       let ipAddress = args.ip || ip.address();
       let port = args.port || '5555';
       this.onPortscanRequested(ipAddress, port);

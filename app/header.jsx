@@ -3,9 +3,7 @@ const log = require('electron-log');
 const electron = require('electron');
 const ipcRenderer = electron.ipcRenderer;
 const shell = electron.shell;
-const ip = require('ip');
-import { connect } from 'react-redux'
-var portscanner = require('portscanner')
+import { connect } from 'react-redux';
 
 class Header extends React.Component {
 
@@ -46,22 +44,8 @@ class Header extends React.Component {
 
   requestPortscan() {
     log.debug('Requesting portscan');
-    const currentIp = ip.address();
-    const baseIp = currentIp.substring(0, currentIp.lastIndexOf('.') + 1);
-    const port = 5555;
-
-    for (let i = 0; i <= 255; i++) {
-      const scannedIp = baseIp + i;
-      portscanner.checkPortStatus(port, scannedIp)
-        .then((status) => {
-          if (status === 'open') {
-            log.debug('Found open port at:', scannedIp);
-            ipcRenderer.send('adbkit-connect-device', scannedIp);
-          }
-        }).catch((err) => {
-          log.error('Unable to scan ports:', err);
-        });
-    }
+    electron.remote.getCurrentWindow().webContents.send('portscan-requested');
+    //ipcRenderer.send('portscan-requested');
   }
 
 }

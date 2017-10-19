@@ -3,6 +3,8 @@
 const electron = require('electron');
 const ipcRenderer = electron.ipcRenderer; 
 const log = require('electron-log');
+const portscanner = require('portscanner');
+const ip = require('ip');
 const actions = require('../app/actions');
 const {Device} = require('./device');
 
@@ -45,6 +47,10 @@ export class DeviceManager {
 
     ipcRenderer.on('adbkit-device-features-updated', (event, device) => {
       this.onDeviceFeaturesUpdated(device);
+    });
+
+    ipcRenderer.on('portscan-requested', (event, args) => {
+      this.onPortscanRequested(args);
     });
 
     // tell the adbkit that we care about device updates
@@ -96,6 +102,44 @@ export class DeviceManager {
     device.onPropertiesUpdated();
     log.debug('Device features updated: ' + device.id);
     this.dispatch(actions.deviceUpdated(device));
+  }
+
+  onPortscanRequested(args) {
+    log.debug('Starting portscan');
+    if (!args) {
+      args = {};
+    }
+    if (args.ip === undefined) {
+        args.ip = ip.address();
+    }
+    if (args.port === undefined) {
+        args.port = '5555';
+    }
+    const baseIp = args.ip.substring(0, args.ip.lastIndexOf('.') + 1);
+    const port = args.port;
+    for (let i = 0; i <= 255; i++) {
+      const scannedIp = baseIp + i;
+      portscanner.checkPortStatus(port, scannedIp)
+        .then((status) => {
+          if (status === 'open') {
+            log.debug('Found open port at:', scannedIp);
+            let device = Device.fromPortScan(scannedIp, port);
+            this.onNetworkDeviceDiscovered(device);
+          }
+        }).catch((err) => {
+          log.error('Unable to scan port:', err);
+        });
+    }
+  }
+
+  onNetworkDeviceDiscovered(device) {
+    // check if we already know this device
+    let existingDevice = this.deviceMap.get(device.id);
+    if (!existingDevice) {
+      // attempt to connect
+      ipcRenderer.send('adbkit-connect-device', device.ipAddress);
+    }
+    this.dispatch(actions.deviceDiscovered(device));
   }
 
 }

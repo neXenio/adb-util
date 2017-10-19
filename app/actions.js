@@ -13,6 +13,11 @@ export const deviceUpdated = (device) => ({
   payload: device
 });
 
+export const deviceDiscovered = (device) => ({
+  type: 'DEVICE_DISCOVERED',
+  payload: device
+});
+
 export const sidebarSelectionChanged = (item) => ({
   type: 'SIDEBAR_SELECTION_CHANGED',
   payload: item

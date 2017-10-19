@@ -6,6 +6,7 @@ const devices = (state = {}, action) => {
     case 'DEVICE_ADDED':
     case 'DEVICE_REMOVED':
     case 'DEVICE_UPDATED':
+    case 'DEVICE_DISCOVERED':
       return Object.assign({}, state, {
         [action.payload.id]: action.payload
       });

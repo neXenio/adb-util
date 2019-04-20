@@ -8,6 +8,18 @@ export class Device {
     this.creationDate = new Date();
   }
 
+  static fromPortScan(ipAddress, port) {
+    let device = new Device();
+    device.id = ipAddress + ':' + port;
+    device.ipAddress = ipAddress;
+    device.port = port;
+    device.androidId = 'Unknown';
+    device.hardwareType = device.getHardwareType();
+    device.isConnected = false;
+    device.readableState = device.getReadableState();
+    return device;
+  }
+
   static fromAdbKitDevice(adbKitDevice) {
     let device = new Device();
     device.id = adbKitDevice.id;

@@ -55,7 +55,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "cross-spawn": "^5.1.0",
     "css-loader": "^0.28.7",
-    "electron": "^1.7.8",
+    "electron": "^9.1.0",
     "electron-packager": "^9.1.0",
     "electron-prebuilt": "^1.4.13",
     "file-loader": "^0.11.2",
